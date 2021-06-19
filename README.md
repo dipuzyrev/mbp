@@ -21,7 +21,7 @@ git clone https://github.com/dipuzyrev/mbp
 # Start API
 cd backend
 python3 -m venv env
-source ./env/bin/activate
+source ./env/bin/activate  # WIN: "env\Scripts\activate"
 pip install -r requirements.txt
 python manage.py runserver
 
@@ -30,7 +30,13 @@ cd ../frontend
 yarn && yarn serve
 ```
 
-...to be continued
+### Админ аккаунт
+- admin@mbp.ru
+- supersecret
+
+### Тестовый пациент
+- patient@mbp.ru
+- supersecret
 
 ## Технологический стэк
 
