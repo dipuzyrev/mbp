@@ -130,7 +130,7 @@ export default defineComponent({
     }
 
     const addMeasurement = () => {
-      router.push('/addMeasurement')
+      router.push('/add')
     }
 
     onMounted(() => {

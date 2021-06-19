@@ -69,7 +69,7 @@ a {
 
 }
 
-input {
+input, textarea {
   background: #FBFCFF;
   border: 1px solid #ECEEF2;
   box-sizing: border-box;
