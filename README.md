@@ -54,3 +54,7 @@ yarn && yarn serve
 - [Router](https://router.vuejs.org/ru/) - официальный маршрутизатор для VueJS
 - [TypeScript](https://www.typescriptlang.org/) - типизированный JavaScript, позволяющий отлавливать ошибки до запуска кода
 
+## Авторы проекта
+- [Дмитрий Пузырев](https://t.me/dipuzyrev) - бэкенд
+- [Платон Лапп](https://t.me/SeamMiner) - фронтенд
+- [Александр Щеблыкин](https://t.me/greeneboy) - десигн
