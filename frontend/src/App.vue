@@ -157,6 +157,10 @@ button {
     box-shadow: 0 0 0 4px #87abf9;
   }
 
+  &:disabled {
+    opacity: .6;
+  }
+
   &.danger {
     background: #FFFFFF;
     border: 1px solid #FFBEBE;
@@ -208,6 +212,10 @@ button {
         color: #FFFFFF;
       }
     }
+  }
+
+  &.option {
+    background: #EDF5FD;
   }
 }
 

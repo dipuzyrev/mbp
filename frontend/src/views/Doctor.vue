@@ -2,7 +2,7 @@
 	<div class="container">
 		<form @submit.prevent="getPatient" class="title">
 			<h2>Карточка пациента</h2>
-			<input type="search" name="snils" id="snils" v-model="snils" placeholder="Поиск по СНИЛС">
+			<input v-mask="'###-###-### ##'" type="search" name="snils" id="snils" v-model="snils" placeholder="Поиск по СНИЛС">
 		</form>
 
     <div v-show="!fname && isNotFound" class="surface white notFound">
@@ -126,6 +126,7 @@ import { defineComponent, onMounted, ref, watchEffect, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import Chart from 'chart.js/auto'
 import axios from 'axios';
+import {mask} from 'vue-the-mask'
 
 type pacient = {
   treatment: string,
@@ -142,6 +143,7 @@ type measure = {
 }
 
 export default defineComponent({
+  directives: {mask},
   setup() {
 
     const route = useRoute();

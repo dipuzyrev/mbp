@@ -45,7 +45,7 @@ export default defineComponent({
           }
         }
       ).then(response => {
-        router.push('/patient')
+        router.push('/hw')
       }).catch(error => {
         alert(error.response.data.detail)
       })
