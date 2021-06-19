@@ -61,7 +61,7 @@ a {
 
 }
 
-input, textarea {
+input, textarea, select {
   background: #FBFCFF;
   border: 1px solid #ECEEF2;
   box-sizing: border-box;
@@ -81,6 +81,11 @@ input, textarea {
   &:focus {
     outline: none;
     box-shadow: 0 0 0 4px #87abf9;
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    user-select: none;
   }
 
   &.gosUslugi {
@@ -134,7 +139,9 @@ button {
   color: #FFFFFF;
   padding: 16px 24px 17px;
   border: none;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: all .15s ease-in-out;
   width: 100%;
   cursor: pointer;
@@ -168,8 +175,8 @@ button {
   &.gosUslugi {
     background: #FFFFFF;
     border-radius: 4px;
-    border: 1px solid #565656;
-    color: #565656;
+    border: 1px solid #E2E2E1;
+    color: #E2E2E1;
     font-size: 18px;
 
     &:hover {
@@ -213,6 +220,15 @@ button {
   align-items: center;
   margin-bottom: 20px;
   position: relative;
+
+  &.white {
+    background: #FFFFFF;
+    border: 1px solid #F3F3F7;
+    box-sizing: border-box;
+    border-radius: 16px;
+    flex-flow: column;
+    align-items: flex-start;
+  }
 
   & > * + * {
     margin-left: 20px;
