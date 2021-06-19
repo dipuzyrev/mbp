@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-1tzgcp+lcyc_$kjz_z@(wrz^6%@3^+!dkmgkhpk24en=%m1c^n
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '5.53.125.96']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '5.53.125.96']
 
 
 # Application definition
@@ -40,7 +40,7 @@ INSTALLED_APPS = [
 
     # Rest Framework
     'rest_framework',
-    # 'corsheaders',
+    'corsheaders',
 
     # Project
     'main'
@@ -141,20 +141,20 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
         'rest_framework.permissions.IsAdminUser',
     ],
-    # 'DEFAULT_AUTHENTICATION_CLASSES': [
-    #     'rest_framework_simplejwt.authentication.JWTAuthentication',
-    # ]
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ]
 }
 
 
 # CORS HEADERS
 
 # Allow cookie in request
-# CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_CREDENTIALS = True
 
 # Allowed origins to perform requests to this API
-# CORS_ALLOWED_ORIGINS = [
-#     'http://localhost',
-#     'http://5.53.125.96',
-#     'https://5.53.125.96',
-# ]
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost',
+    'http://5.53.125.96',
+    'https://5.53.125.96',
+]

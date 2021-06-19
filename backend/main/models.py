@@ -24,13 +24,13 @@ class User(AbstractUser):
     age = models.PositiveIntegerField()
     gender = models.TextField()
     phone = models.TextField()
-    height = models.PositiveIntegerField()
-    weight = models.PositiveIntegerField()
+    height = models.PositiveIntegerField(null=True, blank=True)
+    weight = models.PositiveIntegerField(null=True, blank=True)
     tonometer = models.ForeignKey('Tonometer', on_delete=models.SET_NULL, null=True, blank=True, related_name='patient_tonometer')
 
     # A list of the field names that will be prompted for when creating a user via the
     # 'createsuperuser' management command
-    REQUIRED_FIELDS = ['snils', 'age', 'gender', 'phone', 'height', 'weight']
+    REQUIRED_FIELDS = ['snils', 'age', 'gender', 'phone']
 
     objects = CustomUserManager()
 
