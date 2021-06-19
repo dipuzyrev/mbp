@@ -194,11 +194,6 @@ export default defineComponent({
       router.push('/add')
     }
 
-    onMounted(() => {
-      // const ctx = document.getElementById('graph');
-      // new Chart(ctx, config.value)
-    })
-
     return {
       logout,
       addMeasurement,

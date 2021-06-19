@@ -163,7 +163,7 @@ class PatientProfileAPI(APIView):
 class PatientBySnilsAPI(APIView):
     permission_classes = [permissions.AllowAny]
 
-    def get(self, request):
+    def post(self, request):
         snils = request.data.get('snils')
         sault = request.data.get('sault')
 
