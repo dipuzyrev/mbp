@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-1tzgcp+lcyc_$kjz_z@(wrz^6%@3^+!dkmgkhpk24en=%m1c^n
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['5.53.125.96']
+ALLOWED_HOSTS = ['127.0.0.1', '5.53.125.96']
 
 
 # Application definition
@@ -37,6 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Rest Framework
+    'rest_framework',
+    # 'corsheaders',
+
+    # Project
+    'main'
 ]
 
 MIDDLEWARE = [
@@ -100,18 +107,14 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
+# INTERNATIONALIZATION
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
-USE_L10N = True
-
-USE_TZ = True
+USE_I18N = True  # Enable translation mechanism
+USE_L10N = True  # Local format of date, time and numbers
+USE_TZ = True  # Use timezone-aware datetimes
+LANGUAGE_CODE = 'ru'
+TIME_ZONE = 'Europe/Moscow'
 
 
 # Static files (CSS, JavaScript, Images)
@@ -123,3 +126,35 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# CUSTOM USER MODEL
+
+AUTH_USER_MODEL = 'main.User'
+ACCOUNT_USER_MODEL_USERNAME_FIELD = 'email'
+
+
+# REST FRAMEWORK
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.IsAdminUser',
+    ],
+    # 'DEFAULT_AUTHENTICATION_CLASSES': [
+    #     'rest_framework_simplejwt.authentication.JWTAuthentication',
+    # ]
+}
+
+
+# CORS HEADERS
+
+# Allow cookie in request
+# CORS_ALLOW_CREDENTIALS = True
+
+# Allowed origins to perform requests to this API
+# CORS_ALLOWED_ORIGINS = [
+#     'http://localhost',
+#     'http://5.53.125.96',
+#     'https://5.53.125.96',
+# ]
