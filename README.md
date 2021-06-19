@@ -10,7 +10,8 @@
 
 ## Демо
 
-Скоро здесь будет демка...
+- [Пациент](http://5.53.125.96:8080/) (login: patient@mbp.ru, pass: supersecret)
+- [Врач](http://5.53.125.96:8080/doctor/cp3twep8onrgy/)
 
 ![Demo](demo.png)
 
@@ -43,7 +44,7 @@ yarn && yarn serve
 - patient@mbp.ru
 - supersecret
 
-### [Кабинет врача](http://localhost:8080/doctor/)
+### [Кабинет врача](http://localhost:8080/doctor/cp3twep8onrgy/)
 
 ## Технологический стэк
 
