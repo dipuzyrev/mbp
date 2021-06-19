@@ -13,12 +13,52 @@
     </div>
     
 
-    <form @submit.prevent="$router.push('/patient')" class="reg-form">
-      <input placeholder="Изготовитель и модель" type="text" required>
+    <form @submit.prevent="updateTon" class="reg-form">
+      <input placeholder="Изготовитель и модель" type="text" v-model="tonometr" required>
       <button type="submit">Продолжить</button>
     </form>
   </div>
 </template>
+
+<script lang="ts">
+import { defineComponent, ref } from 'vue'
+import { useRouter } from 'vue-router'
+import axios from 'axios'
+
+export default defineComponent({
+  setup() {
+    const api = '/api/update_tonometer/'
+    const router = useRouter()
+    const tonometr = ref('')
+
+    const updateTon = () => {
+      axios.post(
+        api, 
+        {
+          'name': tonometr.value
+        },
+        {
+          headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('JWTAccess'),
+            'X-Requested-With': 'XMLHttpRequest',
+            'Content-Type': 'application/json'
+          }
+        }
+      ).then(response => {
+        router.push('/patient')
+      }).catch(error => {
+        alert(error.response.data.detail)
+      })
+    }
+
+    return {
+      updateTon,
+      tonometr
+    }
+  },
+})
+</script>
+
 
 <style lang="scss" scoped>
 .container {

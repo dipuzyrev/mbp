@@ -6,14 +6,57 @@
       идентификации и аутентификации
     </h1>
 
-    <form @submit.prevent="$router.push('/HW')" class="reg-form">
+    <form @submit.prevent="logIn" class="reg-form">
       <h1>Вход</h1>
-      <input placeholder="СНИЛС, email" class="gosUslugi" type="text" required>
-      <input placeholder="Пароль" class="gosUslugi" type="password" required>
+      <input placeholder="СНИЛС, email" class="gosUslugi" type="text" v-model="login" required>
+      <input placeholder="Пароль" class="gosUslugi" type="password" v-model="password" required>
       <button type="submit" class="gosUslugi blue">Войти</button>
     </form>
   </div>
 </template>
+
+<script lang="ts">
+import { defineComponent, ref } from 'vue'
+import { useRouter } from 'vue-router'
+import axios from 'axios'
+
+export default defineComponent({
+  setup() {
+    const login = ref('');
+    const password = ref('');
+    const loginAPI = "/api/jwt/create/"
+    const router = useRouter()
+
+    const logIn = () => {
+      axios.post(
+        loginAPI,
+        {
+          'email': login.value,
+          'password': password.value
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        }
+      ).then(response => {
+        localStorage.setItem('JWTRefresh', response.data.refresh)
+        localStorage.setItem('JWTAccess', response.data.access)
+        router.push('/patient');
+      }).catch(error => {
+        alert(error.response.data.detail)
+      })
+    }
+
+    return {
+      login,
+      password,
+      logIn
+    }
+  },
+})
+</script>
+
 
 <style lang="scss" scoped>
 .container {

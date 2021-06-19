@@ -7,23 +7,70 @@
       </div>
     </nav>
 
-    <form>
+    <form @submit.prevent="addMeasure">
       <h1>Введите замеры, разделяя цифры пробелом</h1>
 
       <h4>Верхнее / нижнее / пульс</h4>
 
-      <input placeholder="120 80 70" type="text" required>
+      <input placeholder="120 80 70" type="text" v-model="params" required>
 
-      <textarea placeholder="Комментарий (опционально)" name="comment" id="1" cols="30" rows="10"></textarea>
+      <textarea placeholder="Комментарий (опционально)" name="comment" id="1" cols="30" rows="10" v-model="comment"></textarea>
     </form>
 
     <div class="addMeasure">
-      <button @click="$router.push('/patient')">Добавить замер</button>
+      <button @click="addMeasure">Добавить замер</button>
     </div>
   </div>
 
   
 </template>
+
+<script lang="ts">
+import { defineComponent, ref } from 'vue'
+import { useRouter } from 'vue-router'
+import axios from 'axios'
+
+export default defineComponent({
+  setup() {
+    const api = '/api/add_measurement/'
+    const router = useRouter()
+    const params = ref('')
+    const comment = ref('')
+
+    const addMeasure = () => {
+      const upper = params.value.split(" ")[0]
+      const bottom = params.value.split(" ")[1]
+      const pulse = params.value.split(" ")[2]
+      axios.post(
+        api, 
+        {
+          "upper": upper,
+          "bottom": bottom,
+          "pulse": pulse,
+          "comment": comment.value
+        },
+        {
+          headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('JWTAccess'),
+            'X-Requested-With': 'XMLHttpRequest',
+            'Content-Type': 'application/json'
+          }
+        }
+      ).then(response => {
+        router.push('/patient')
+      }).catch(error => {
+        alert(error.response.data.detail)
+      })
+    }
+
+    return {
+      addMeasure,
+      params,
+      comment
+    }
+  },
+})
+</script>
 
 <style lang="scss" scoped>
 nav {

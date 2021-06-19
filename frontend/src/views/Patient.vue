@@ -8,7 +8,7 @@
           <img height="32" width="32" src="../assets/Treatment.png" alt="Treatment">
           <h3>Назначенное <br> лечение</h3>
         </div>
-        <h4>Препарат, текст текста для текста и тому подобное, ну вы поняли Это тоже не забудьте принять или уже ничего не примете: препарат фарат, текст текста для текста и тому подобное...</h4>
+        <h4>{{ treatment }}</h4>
       </div>
 
       <div class="surface white">
@@ -60,9 +60,9 @@
 
       <div class="surface white">
         <h4>Вы используете тонометр</h4>
-        <h3>B.Well PRO-33 (М-L)</h3>
+        <h3>{{ tonometer }}</h3>
 
-        <h4>Уже другой? <span class="link">Обновить</span></h4>
+        <h4>Уже другой? <span class="link" @click="$router.push('/tonometr')">Обновить</span></h4>
       </div>
 
       <button class="danger" @click="logout">Выйти</button>
@@ -76,33 +76,57 @@
 <script lang="ts">
 import { defineComponent, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
+import axios from 'axios'
 import Chart from 'chart.js/auto'
+
+type pacient = {
+  treatment: string,
+  measurements?: measure[],
+  tonometr: string
+}
+
+type measure = {
+  upper: number,
+  bottom: number,
+  pulse: number,
+  commnet?: string,
+  date: string
+}
 
 export default defineComponent({
     setup() {
       const router = useRouter();
+      const pacient = '/api/patient_profile/'
+      const treatment = ref('')
+      const measurement = ref([])
+      const tonometer = ref('')
 
-      const measurements = ref([
-        {
-          'upper': 120,
-          'bottom': 80,
-          'pulse': 77,
-          'date': new Date(),
-        }
-      ])
-
-        const data = ref({
-      labels: ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"],
-      datasets: [
-        {
-          label: 'Замер Давления',
-          data: [0, 0, 1, 2, 79, 82, 27, 14],
-          borderColor: ['#08B408', '#FF5151' ],
-          backgroundColor: ['#08B408', '#FF5151' ],
-          fill: false,
-        }
-      ]
-    })
+  const data = ref({
+    labels: [] as string[],
+    datasets: [
+      {
+        label: 'Верхнее давление',
+        data: [] as number[],
+        borderColor: '#FF5151',
+        backgroundColor: '#FF5151',
+        fill: false,
+      },
+      {
+        label: 'Нижнее давление',
+        data: [] as number[],
+        borderColor: '#08B408',
+        backgroundColor: '#08B408',
+        fill: false,
+      },
+      {
+        label: 'Пульс',
+        data: [] as number[],
+        borderColor: '#0082FF',
+        backgroundColor: '#0082FF',
+        fill: false,
+      }
+    ]
+  })
 
     const config = ref({
       type: 'line',
@@ -121,11 +145,48 @@ export default defineComponent({
         interaction: {
           intersect: false,
         },
-        lineTension: 1,
+        lineTension: 0,
       },
     });
 
+    axios.get(
+      pacient,
+      {
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('JWTAccess'),
+          'X-Requested-With': 'XMLHttpRequest',
+        }
+      }
+    ).then(response => {
+      treatment.value = response.data.treatment
+      measurement.value = response.data.measurements
+      tonometer.value = response.data.tonometer
+
+      measurement.value.forEach((m: measure)=> {
+        data.value.labels.push((new Date(m.date)).toLocaleDateString('ru-RU'))
+        data.value.datasets[0].data.push(m.upper)
+        // data.value.datasets[0].borderColor.push((m.upper > 140 || m.upper < 100) ? '#FF5151': '#08B408')
+        // data.value.datasets[0].borderColor.push('#FF5151')
+        // data.value.datasets[0].backgroundColor.push((m.upper > 140 || m.upper < 100) ? '#FF5151' : '#08B408')
+        // data.value.datasets[0].backgroundColor.push('#FF5151')
+        
+        data.value.datasets[1].data.push(m.bottom)
+        // data.value.datasets[1].borderColor.push((m.bottom > 100 || m.bottom < 70) ? '#FF5151': '#08B408')
+        // data.value.datasets[1].backgroundColor.push((m.upper > 100 || m.upper < 80) ? '#FF5151' : '#08B408')
+
+        data.value.datasets[2].data.push(m.pulse)
+        // data.value.datasets[2].borderColor.push((m.upper > 140 || m.upper < 100) ? '#FF5151': '#08B408')
+        // data.value.datasets[2].backgroundColor.push((m.upper > 140 || m.upper < 100) ? '#FF5151' : '#08B408')
+
+      })
+
+      const ctx = document.getElementById('graph');
+      new Chart(ctx, config.value)
+    })
+
     const logout = () => {
+      localStorage.removeItem('JWTRefresh')
+      localStorage.removeItem('JWTAccess')
       router.push('/')
     }
 
@@ -134,14 +195,15 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      const ctx = document.getElementById('graph');
-      new Chart(ctx, config.value)
+      // const ctx = document.getElementById('graph');
+      // new Chart(ctx, config.value)
     })
 
     return {
-      measurements,
       logout,
-      addMeasurement
+      addMeasurement,
+      treatment,
+      tonometer
     }
   },
 })

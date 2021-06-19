@@ -12,5 +12,15 @@ module.exports = {
         display: "standalone",
         theme_color: "#ff5a5a",
       },  
+    },
+    devServer: {
+      proxy: {
+        '^/api/': {
+          target: 'http://localhost:8000',
+          pathRewrite: { "^/api/": "/api/" },
+          logLevel: "debug",
+          changeOrigin: true
+        }
+      }
     }
   }
