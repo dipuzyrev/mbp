@@ -187,12 +187,18 @@ export default defineComponent({
 .addMeasure {
   position: fixed;
   bottom: 0;
+  left: 0;
   width: 100%;
-  max-width: 640px;
+  display: flex;
+  justify-content: center;
   background: #FFFFFF;
   box-shadow: inset 0px 1px 0px #E2E2EB;
   padding: 14px 14px 17px 14px;
-  margin: 0 auto;
+
+  & > * {
+    max-width: 640px;
+    margin-bottom: 0;
+  }
 }
 
 button {
