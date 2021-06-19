@@ -14,7 +14,7 @@
 			<div v-show="fname && !isNotFound" class="surface white">
 				<div class="title">
 					<h3>{{  `${fname} ${lname}` }}</h3>
-					<a :href="`tel:${snils}`">+7 (960) 148-44-31</a>
+					<a :href="`tel:${phone}`">{{ phone }}</a>
 				</div>
 
 				<div class="surface info">
@@ -111,7 +111,7 @@
 								<td>{{ (new Date(m.date)).toLocaleDateString() }}</td>
 								<td>{{`${m.upper}/${m.bottom}`}}</td>
 								<td>{{ m.pulse }}</td>
-								<div v-if="m.comment">{{ m.comment }}</div>
+								<td v-if="m.comment">{{ m.comment }}</td>
 							</tr>
 						</tbody>
 					</table>
@@ -157,6 +157,7 @@ export default defineComponent({
     const gender = ref('')
     const height = ref('')
     const weight = ref('')
+    const phone = ref('')
     const treatment_start = ref('')
     const treatment = ref([])
     const measurements = ref([])
@@ -261,6 +262,7 @@ export default defineComponent({
         fname.value = response.data.first_name
         lname.value = response.data.last_name
         age.value = response.data.age
+        phone.value = response.data.phone
         gender.value = response.data.gender
         height.value = response.data.height
         weight.value = response.data.weight
@@ -332,6 +334,7 @@ export default defineComponent({
       graphType,
       startDate,
       endDate,
+      phone,
       treatmentCurrent,
       addNote,
       addTreatment,
