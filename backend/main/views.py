@@ -182,6 +182,7 @@ class PatientBySnilsAPI(APIView):
             'height': user.height,
             'weight': user.weight,
             'snils': user.snils,
+            'phone': user.phone,
             'treatment_start': '',
             'treatment': [],
             'measurements': [],
