@@ -84,8 +84,7 @@ class Tonometer(models.Model):
     Tonometers
     """
 
-    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='tonometer_patient')
     name = models.TextField()
 
     def __str__(self):
-        return f'{self.name} ({self.user})'
+        return f'{self.name}'
