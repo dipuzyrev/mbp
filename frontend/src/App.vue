@@ -26,16 +26,8 @@ body {
   line-height: 1.5;
 }
 
-// img {
-//   max-width: 100%;
-// }
-
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.25;
-}
-
-h1 {
-  font-weight: 500;
 }
 
 h4, h5, h6 {
@@ -192,6 +184,22 @@ button {
 
     &:focus {
       box-shadow: none;
+    }
+
+    &.blue {
+      background: #0063B0;
+      color: #FFFFFF;
+      border: none;
+
+      &:hover {
+        background: #023E83;
+        color: #FFFFFF;
+      }
+
+      &:active {
+        background: #002957;
+        color: #FFFFFF;
+      }
     }
   }
 }

@@ -10,7 +10,7 @@
       <h1>Вход</h1>
       <input placeholder="СНИЛС, email" class="gosUslugi" type="text" required>
       <input placeholder="Пароль" class="gosUslugi" type="password" required>
-      <button type="submit" class="gosUslugi">Войти</button>
+      <button type="submit" class="gosUslugi blue">Войти</button>
     </form>
   </div>
 </template>
@@ -23,5 +23,9 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+
+  & > h1 {
+    font-weight: normal;
+  }
 }
 </style>

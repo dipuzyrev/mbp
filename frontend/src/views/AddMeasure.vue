@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <nav>
-      <img @click="$router.push('/patient')" src="../assets/Chevron.svg" alt="Go back">
+      <img class="goBack" @click="$router.push('/patient')" src="../assets/Chevron.svg" alt="Go back">
       <div class="title">
         <h3>Ввод измерений</h3>
       </div>
@@ -49,5 +49,9 @@ nav {
   box-shadow: inset 0px 1px 0px #E2E2EB;
   padding: 14px 14px 17px 14px;
   margin: 0 auto;
+}
+
+.goBback {
+  cursor: pointer;
 }
 </style>
