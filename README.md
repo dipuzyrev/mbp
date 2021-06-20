@@ -1,6 +1,8 @@
 ![Header](header.png)
 
+
 ## О проекте
+
 **Моё давление** - это сервис, в котором пациент автоматически делится с врачом замерами давления, а врач оперативно корректирует лечение.
 
 ### Ключевые особенности
@@ -8,18 +10,24 @@
 - Карточка пациента позволяет врачу не только анализировать показатели, но и просматривать всю историю болезни пациента, а также сохранять личные заметки, которые он считает важными.
 - PWA архитектура позволяет уменьшить затраты на разработку, при этом давая пользователю возможность взаимодействовать сервисом как с компьютера, так и с телефона в виде мобильного приложения.
 
+
+## Технологический стэк
+
+- [Django](https://www.djangoproject.com/) - свободный фреймворк для веб-приложений на языке Python
+- [DRF](https://www.django-rest-framework.org/) -  библиотека, которая работает со стандартными моделями Django для создания гибкого API
+- [Vue 3](https://v3.ru.vuejs.org/) - прогрессивный JavaScript-фреймворк для создания фронтенда веб-приложения
+- [Vuex](https://vuex.vuejs.org/ru/) - официальный менеджер состояний для VueJS
+- [Router](https://router.vuejs.org/ru/) - официальный маршрутизатор для VueJS
+- [TypeScript](https://www.typescriptlang.org/) - типизированный JavaScript, позволяющий отлавливать ошибки до запуска кода
+
+
 ## Демо
 
-- [Пациент](http://5.53.125.96:8080/) (login: patient@mbp.ru, pass: supersecret)
-- [Врач](http://5.53.125.96:8080/doctor/cp3twep8onrgy/)
-
 ![Demo](demo.png)
+![Demo](demo.mp4)
+
 
 ## Локальный запуск
-
-### По вопросам
-- Бэк: [@dipuzyrev](https://t.me/dipuzyrev)
-- Фронт: [@SeamMiner](https://t.me/SeamMiner)
 
 ```bash
 git clone https://github.com/dipuzyrev/mbp
@@ -36,26 +44,15 @@ cd ../frontend
 yarn && yarn serve
 ```
 
-### [Админ аккаунт](http://localhost:8000/admin/)
-- admin@mbp.ru
-- supersecret
 
-### [Тестовый пациент](http://localhost:8080/)
-- patient@mbp.ru
-- supersecret
+### Локальные ссылки
 
-### [Кабинет врача](http://localhost:8080/doctor/cp3twep8onrgy/)
+- [Кабинет врача](http://localhost:8080/doctor/cp3twep8onrgy/)
+- [Тестовый пациент](http://localhost:8080/) (patient@mbp.ru / supersecret)
+- [Django админка](http://localhost:8000/admin/) (admin@mbp.ru / supersecret)
 
-## Технологический стэк
 
-- [Django](https://www.djangoproject.com/) - свободный фреймворк для веб-приложений на языке Python
-- [DRF](https://www.django-rest-framework.org/) -  библиотека, которая работает со стандартными моделями Django для создания гибкого API
-- [Vue 3](https://v3.ru.vuejs.org/) - прогрессивный JavaScript-фреймворк для создания фронтенда веб-приложения
-- [Vuex](https://vuex.vuejs.org/ru/) - официальный менеджер состояний для VueJS
-- [Router](https://router.vuejs.org/ru/) - официальный маршрутизатор для VueJS
-- [TypeScript](https://www.typescriptlang.org/) - типизированный JavaScript, позволяющий отлавливать ошибки до запуска кода
-
-## Авторы проекта
+## Контакты
 - [Дмитрий Пузырев](https://t.me/dipuzyrev) - бэкенд
 - [Платон Лапп](https://t.me/SeamMiner) - фронтенд
 - [Александр Щеблыкин](https://t.me/greeneboy) - десигн

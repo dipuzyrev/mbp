@@ -16,7 +16,7 @@ module.exports = {
     devServer: {
       proxy: {
         '^/api/': {
-          target: 'http://5.53.125.96:8000',
+          target: 'http://localhost:8000',
           pathRewrite: { "^/api/": "/api/" },
           logLevel: "debug",
           changeOrigin: true

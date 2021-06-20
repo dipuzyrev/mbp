@@ -5,8 +5,8 @@
     </h1>
 
     <form @submit.prevent="updateHW" class="reg-form">
-      <input placeholder="Рост" type="text" v-model="height" required>
-      <input placeholder="Вес"  type="text" v-model="weight" required>
+      <input placeholder="Рост" type="number" v-model="height" required>
+      <input placeholder="Вес"  type="number" v-model="weight" required>
       <button type="submit">Войти</button>
     </form>
 
