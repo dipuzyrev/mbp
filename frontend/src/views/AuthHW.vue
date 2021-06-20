@@ -41,7 +41,7 @@ export default defineComponent({
           }
         }
       ).then(response => {
-        router.push('/patient')
+        router.push('/tonometr')
       }).catch(error => {
         alert(error.response.data.detail)
       })

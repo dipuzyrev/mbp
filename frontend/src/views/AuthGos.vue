@@ -42,7 +42,7 @@ export default defineComponent({
       ).then(response => {
         localStorage.setItem('JWTRefresh', response.data.refresh)
         localStorage.setItem('JWTAccess', response.data.access)
-        router.push('/patient');
+        router.push('/hw');
       }).catch(error => {
         alert(error.response.data.detail)
       })
