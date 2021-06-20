@@ -23,8 +23,9 @@
 
 ## Демо
 
+https://dipuzyrev.github.io/mbp/demo.mp4
+
 ![Demo](demo.png)
-![Demo](https://dipuzyrev.github.io/mbp/demo.mp4)
 
 
 ## Локальный запуск
