@@ -1,5 +1,9 @@
 ![Header](header.png)
 
+## Команда
+- [Дмитрий Пузырев](https://t.me/dipuzyrev) - бэкенд
+- [Платон Лапп](https://t.me/SeamMiner) - фронтенд
+- [Александр Щеблыкин](https://t.me/greeneboy) - десигн
 
 ## О проекте
 
@@ -51,9 +55,3 @@ yarn && yarn serve
 - [Кабинет врача](http://localhost:8080/doctor/cp3twep8onrgy/)
 - [Тестовый пациент](http://localhost:8080/) (patient@mbp.ru / supersecret)
 - [Django админка](http://localhost:8000/admin/) (admin@mbp.ru / supersecret)
-
-
-## Контакты
-- [Дмитрий Пузырев](https://t.me/dipuzyrev) - бэкенд
-- [Платон Лапп](https://t.me/SeamMiner) - фронтенд
-- [Александр Щеблыкин](https://t.me/greeneboy) - десигн
