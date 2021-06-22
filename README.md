@@ -35,7 +35,7 @@ https://dipuzyrev.github.io/mbp/demo.mp4
 ## Локальный запуск
 
 ```bash
-git clone https://github.com/dipuzyrev/mbp
+git clone https://github.com/dipuzyrev/mbp && cd mbp
 
 # Start API
 cd backend
@@ -52,6 +52,6 @@ yarn && yarn serve
 
 ### Локальные ссылки
 
-- [Кабинет врача](http://localhost:8080/doctor/cp3twep8onrgy/)
+- [Кабинет врача](http://localhost:8080/doctor/cp3twep8onrgy/) (СНИЛС: 12345678900)
 - [Тестовый пациент](http://localhost:8080/) (patient@mbp.ru / supersecret)
 - [Django админка](http://localhost:8000/admin/) (admin@mbp.ru / supersecret)
